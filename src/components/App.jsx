@@ -39,6 +39,17 @@ export class App extends Component {
     });
   };
 
+  editWord = word => {
+    this.setState(prevState => ({
+      words: prevState.words.map(el => {
+        if (el.id === word.id) {
+          return word;
+        }
+        return el;
+      }),
+    }));
+  };
+
   render() {
     const filteredWords = this.filterWords();
 
@@ -46,7 +57,11 @@ export class App extends Component {
       <div>
         <WordsForm addWord={this.addWord} />
         <Filter value={this.state.filter} onFilterChange={this.handleChange} />
-        <WordsList words={filteredWords} onDelete={this.removeWord} />
+        <WordsList
+          words={filteredWords}
+          onDelete={this.removeWord}
+          onEdit={this.editWord}
+        />
       </div>
     );
   }
