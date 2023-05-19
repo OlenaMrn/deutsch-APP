@@ -1,6 +1,5 @@
 import React from 'react';
 import WordListItem from './WordListItem/WordListItem';
-
 export default function WordsList({ words, onDelete, onEdit }) {
   return (
     <ul>
